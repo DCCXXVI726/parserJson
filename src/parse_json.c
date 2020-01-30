@@ -6,7 +6,7 @@
 /*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 16:44:06 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/27 02:53:00 by thorker          ###   ########.fr       */
+/*   Updated: 2020/01/30 12:33:25 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ t_key_value	*parse_json(char *file_name)
 	}
 	if (flag == 0)
 		return (tmp);
-	else
-		return (0);
+	ft_return(&tmp);
+	return (0);
 }

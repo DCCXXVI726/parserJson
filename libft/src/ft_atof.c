@@ -5,25 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 09:31:33 by deladia           #+#    #+#             */
-/*   Updated: 2020/01/25 09:31:38 by deladia          ###   ########.fr       */
+/*   Created: 2019/11/05 19:15:40 by deladia           #+#    #+#             */
+/*   Updated: 2019/11/09 18:54:51 by deladia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 
-static double	ft_while(char **s, double nbr1)
-{
-	while (ft_isdigit(**s))
-	{
-		nbr1 = nbr1 * 10 + **s - '0';
-		(*s)++;
-	}
-	return (nbr1);
-}
-
-double			ft_atof(char *s)
+double		ft_atof(char *s)
 {
 	int				i;
 	double			nbr1;
@@ -33,12 +23,13 @@ double			ft_atof(char *s)
 	nbr1 = 0.0;
 	nbr2 = 0.0;
 	sign = 1;
-	if (*s == '-')
-	{
-		s++;
+	if (*s++ == '-')
 		sign = -1;
+	while (ft_isdigit(*s) && *s != '.')
+	{
+		nbr1 = nbr1 * 10 + *s - '0';
+		s++;
 	}
-	nbr1 = ft_while(&s, nbr1);
 	if (*s == '.')
 		s++;
 	i = 1;
