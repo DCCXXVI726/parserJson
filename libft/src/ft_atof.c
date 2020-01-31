@@ -6,16 +6,16 @@
 /*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 19:15:40 by deladia           #+#    #+#             */
-/*   Updated: 2020/01/31 06:51:36 by thorker          ###   ########.fr       */
+/*   Updated: 2020/01/31 07:51:47 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 
-static int    atoi_shift(char **s, size_t *i)
+static int		atoi_shift(char **s, size_t *i)
 {
-	int number;
+	int	number;
 
 	number = ft_atoi(*s);
 	*i = 0;
@@ -34,17 +34,17 @@ static int    atoi_shift(char **s, size_t *i)
 	return (number);
 }
 
-double        ft_atof(char *s)
+double			ft_atof(char *s)
 {
-	size_t            i;
-	double            number;
-	double            nbr_point;
+	size_t	i;
+	double	number;
+	double	nbr_point;
 
 	if (s == 0)
 		return (0);
 	number = atoi_shift(&s, &i);
 	if (*(s) != '.' && ft_isdigit(*(s + 1)) == 0)
-		return(number);
+		return (number);
 	s++;
 	nbr_point = atoi_shift(&s, &i);
 	while (i-- > 0)
