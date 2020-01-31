@@ -6,7 +6,7 @@
 /*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 21:17:29 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/21 22:42:31 by thorker          ###   ########.fr       */
+/*   Updated: 2020/01/31 04:29:42 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		getf_int_array(t_array *array, size_t item, int *number)
 ** и кладет в контейнер "number" вещественное число
 */
 
-int		getf_double_array(t_array *array, size_t item, int *number)
+int		getf_double_array(t_array *array, size_t item, double *number)
 {
 	void	*container;
 	int		error;

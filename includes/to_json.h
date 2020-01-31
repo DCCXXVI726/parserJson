@@ -6,7 +6,7 @@
 /*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 01:50:08 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/27 02:34:36 by thorker          ###   ########.fr       */
+/*   Updated: 2020/01/31 04:25:43 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct			s_token
 int						getf_int_array(t_array *array,
 		size_t item, int *number);
 int						getf_double_array(t_array *array,
-		size_t item, int *number);
+		size_t item, double *number);
 int						getf_object_array(t_array *array,
 		size_t item, t_key_value **object);
 int						getf_array_array(t_array *array,
