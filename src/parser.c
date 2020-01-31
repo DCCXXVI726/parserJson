@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:44:57 by deladia           #+#    #+#             */
-/*   Updated: 2020/01/27 00:05:05 by thorker          ###   ########.fr       */
+/*   Updated: 2020/01/31 10:10:51 by deladia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char		*create_word(char **line)
 		(*line)++;
 	len = word_len(*line);
 	if (!(word = (char *)ft_memalloc(sizeof(char) * len + 1)))
-		ft_error("Memory not allocated (for word)");
+		return (NULL);
 	while (len-- > 0)
 	{
 		word[i] = **line;
@@ -73,8 +73,13 @@ t_token		*parse(char *line, t_token *token)
 
 	while (*line != '\0')
 	{
-		word = create_word(&line);
-		token = create_token(word, token);
+		if ((word = create_word(&line)) == NULL)
+			return (NULL);
+		if ((token = create_token(word, token)) == NULL)
+		{
+			free(word);
+			return (NULL);
+		}
 		free(word);
 	}
 	return (token);
@@ -94,9 +99,12 @@ t_token		*ft_open(char *file)
 	t_token			*token_tmp;
 
 	if ((fd = open(file, O_RDONLY)) < 0)
-		ft_error("Can't open file!");
+		return (NULL);
 	if (!(token_head = (t_token *)ft_memalloc(sizeof(t_token))))
-		ft_error("Memory not allocated (for token)");
+	{
+		close(fd);
+		return (NULL);
+	}
 	token_tmp = token_head;
 	while (get_next_line(fd, &line) > 0)
 	{
