@@ -6,38 +6,52 @@
 /*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 19:15:40 by deladia           #+#    #+#             */
-/*   Updated: 2019/11/09 18:54:51 by deladia          ###   ########.fr       */
+/*   Updated: 2020/01/31 06:51:36 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <math.h>
 
-double		ft_atof(char *s)
+static int    atoi_shift(char **s, size_t *i)
 {
-	int				i;
-	double			nbr1;
-	double			nbr2;
-	short	int		sign;
+	int number;
 
-	nbr1 = 0.0;
-	nbr2 = 0.0;
-	sign = 1;
-	if (*s++ == '-')
-		sign = -1;
-	while (ft_isdigit(*s) && *s != '.')
+	number = ft_atoi(*s);
+	*i = 0;
+	while (**s != 0)
 	{
-		nbr1 = nbr1 * 10 + *s - '0';
-		s++;
+		if (**s == '-' || **s == '+')
+		{
+			if (*i != 0)
+				return (number);
+		}
+		else if (ft_isdigit(**s) == 0)
+			return (number);
+		(*s)++;
+		(*i)++;
 	}
-	if (*s == '.')
-		s++;
-	i = 1;
-	while (*s && ft_isdigit(*s))
-	{
-		nbr2 = nbr2 + (double)(*s - '0') / (pow(10, i));
-		s++;
-		i++;
-	}
-	return ((nbr1 + nbr2) * sign);
+	return (number);
+}
+
+double        ft_atof(char *s)
+{
+	size_t            i;
+	double            number;
+	double            nbr_point;
+
+	if (s == 0)
+		return (0);
+	number = atoi_shift(&s, &i);
+	if (*(s) != '.' && ft_isdigit(*(s + 1)) == 0)
+		return(number);
+	s++;
+	nbr_point = atoi_shift(&s, &i);
+	while (i-- > 0)
+		nbr_point = nbr_point / 10;
+	if (number < 0)
+		number -= nbr_point;
+	else
+		number += nbr_point;
+	return (number);
 }

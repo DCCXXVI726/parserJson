@@ -6,7 +6,7 @@
 /*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:54:38 by deladia           #+#    #+#             */
-/*   Updated: 2020/01/30 12:33:02 by thorker          ###   ########.fr       */
+/*   Updated: 2020/01/31 07:18:06 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_return_array(t_array **array, t_type type, void **value)
 {
 	size_t	i;
 
-	if (array == 0)
+	if (array == 0 || *array == 0)
 		return ;
 	i = (*array)->length;
 	while (i-- > 0)
@@ -53,10 +53,12 @@ void	ft_return(t_key_value **tree)
 {
 	int		i;
 
-	if (tree == 0 || (i = 0))
+	if (tree == 0 || *tree == 0 || (i = 0))
 		return ;
 	while ((*tree)->key[i])
+	{
 		ft_strdel((*tree)->key + i++);
+	}
 	free((*tree)->key);
 	while (--i >= 0)
 	{
