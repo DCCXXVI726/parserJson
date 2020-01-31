@@ -6,7 +6,7 @@
 /*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 22:37:18 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/30 11:47:26 by thorker          ###   ########.fr       */
+/*   Updated: 2020/01/31 04:50:21 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,8 @@ void		*check_value(t_token **token, t_type *type)
 	}
 	else if (ft_str_isdouble((*token)->value) != 0)
 	{
-		printf("до мейк дабл: %s\n", (*token)->value);
-		printf("atof: %f\n", atof((*token)->value)); 
 		if ((new_value = make_double(token)) != 0)
 			*type = Doub;
-		printf("после make дабл: %f\n", *((double*)new_value));
 	}
 	else
 		new_value = check_value2(token, type, new_value);
