@@ -6,13 +6,13 @@
 /*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:44:57 by deladia           #+#    #+#             */
-/*   Updated: 2020/02/01 12:21:27 by deladia          ###   ########.fr       */
+/*   Updated: 2020/02/01 13:51:37 by deladia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "to_json.h"
 
-void		*ft_free_token(t_token **head_token)
+int			ft_free_token(t_token **head_token)
 {
 	t_token *tmp;
 
@@ -109,9 +109,7 @@ t_token		*parse(char *line, t_token *token)
 t_token		*ft_open(char *file)
 {
 	ssize_t			fd;
-	char			*line;
 	t_token			*token_head;
-	t_token			*token_tmp;
 
 	if ((fd = open(file, O_RDONLY)) < 0)
 		return (NULL);
@@ -120,16 +118,8 @@ t_token		*ft_open(char *file)
 		close(fd);
 		return (NULL);
 	}
-	token_tmp = token_head;
-	while (get_next_line(fd, &line) > 0)
-	{
-		if ((token_tmp = parse(line, token_tmp)) == 0)
-		{
-			ft_strdel(&line);
-			return (ft_free_token(&token_head));
-		}
-		free(line);
-	}
+	if (ft_gnl(fd, &token_head) == 0)
+		return (0);
 	close(fd);
 	if (token_head->value == 0)
 	{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: deladia <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: deladia <deladia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/07 20:57:04 by deladia           #+#    #+#              #
-#    Updated: 2020/01/31 06:45:22 by thorker          ###   ########.fr        #
+#    Updated: 2020/02/01 13:51:50 by deladia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_DIR = src
 OBJ_DIR = object
 LIB_DIR	= libft
 
-FLAG = -Wall -Wextra -Werror -g
+FLAG = -Wall -Wextra -Werror
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 .PHONY : all clean fclean lib_ft re test
