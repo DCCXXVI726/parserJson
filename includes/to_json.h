@@ -6,7 +6,7 @@
 /*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 01:50:08 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/31 06:58:18 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/01 11:09:51 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void					*ft_find(t_key_value *tree,
 void					*find_in_array(t_array *array,
 		size_t item, t_type type, int *error);
 int						check_null_object(t_token **tiken);
+void					*ft_free_token(t_token **head_token);
 #endif

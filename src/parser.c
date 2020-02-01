@@ -6,11 +6,26 @@
 /*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:44:57 by deladia           #+#    #+#             */
-/*   Updated: 2020/01/31 10:10:51 by deladia          ###   ########.fr       */
+/*   Updated: 2020/02/01 11:26:58 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "to_json.h"
+
+void		*ft_free_token(t_token **head_token)
+{
+	t_token *tmp;
+
+	while (*head_token != 0)
+	{
+		tmp = (*head_token)->next;
+		if ((*head_token)->value != 0)
+			ft_strdel(&((*head_token)->value));
+		ft_memdel((void**)head_token);
+		*head_token = tmp;
+	}
+	return (0);
+}
 
 int			word_len(char *line)
 {
@@ -71,6 +86,8 @@ t_token		*parse(char *line, t_token *token)
 {
 	char	*word;
 
+	if (line == 0)
+
 	while (*line != '\0')
 	{
 		if ((word = create_word(&line)) == NULL)
@@ -108,9 +125,18 @@ t_token		*ft_open(char *file)
 	token_tmp = token_head;
 	while (get_next_line(fd, &line) > 0)
 	{
-		token_tmp = parse(line, token_tmp);
+		if ((token_tmp = parse(line, token_tmp)) == 0)
+		{
+			ft_strdel(&line);
+			return (ft_free_token(&token_head));
+		}
 		free(line);
 	}
 	close(fd);
+	if (token_head->value == 0)
+	{
+		ft_memdel((void**)&token_head);
+		return (0);
+	}
 	return (token_head);
 }

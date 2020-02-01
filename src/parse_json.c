@@ -6,7 +6,7 @@
 /*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 16:44:06 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/31 07:13:16 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/01 11:28:36 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,7 @@ t_key_value	*parse_json(char *file_name)
 		flag = 1;
 	else if ((t_token*)(tmp = make_object(&token)) == token)
 		flag = 1;
-	while (head_token != 0)
-	{
-		token = head_token->next;
-		free(head_token->value);
-		free(head_token);
-		head_token = token;
-	}
+	ft_free_token(&head_token);
 	if (flag == 0)
 		return (tmp);
 	return (0);

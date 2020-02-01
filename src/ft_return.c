@@ -6,7 +6,7 @@
 /*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:54:38 by deladia           #+#    #+#             */
-/*   Updated: 2020/01/31 07:18:06 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/01 11:35:13 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,9 @@ void	ft_return(t_key_value **tree)
 			free((*tree)->value[i]);
 		*((*tree)->value + i) = 0;
 	}
-	free((*tree)->value);
-	(*tree)->value = 0;
-	free((*tree)->type);
-	(*tree)->type = 0;
-	free(*tree);
-	*tree = 0;
+	ft_memdel((void**)&((*tree)->value));
+	ft_memdel((void**)&((*tree)->type));
+	ft_memdel((void**)tree);
 }
 
 /*
