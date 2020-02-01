@@ -6,7 +6,7 @@
 /*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 16:32:42 by deladia           #+#    #+#             */
-/*   Updated: 2020/01/22 01:23:58 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/01 05:41:45 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		get_str(t_key_value *tree, char *name, char **str)
 		return (WRONG_CONTAINER);
 	container = ft_find(tree, name, String, &error);
 	if (error == 0)
-		*str = (char*)container;
+		*str = get_strdup(container);
 	return (error);
 }
 

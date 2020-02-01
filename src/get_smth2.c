@@ -6,7 +6,7 @@
 /*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 21:17:29 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/31 04:29:42 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/01 05:42:17 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ int		getf_str_array(t_array *array, size_t item, char **str)
 	error = 0;
 	container = find_in_array(array, item, String, &error);
 	if (error == 0)
-		ft_strcpy(*str, container);
+		*str = ft_strdup(container);
 	return (error);
 }
