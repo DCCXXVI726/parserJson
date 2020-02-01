@@ -6,7 +6,7 @@
 /*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 20:44:57 by deladia           #+#    #+#             */
-/*   Updated: 2020/02/01 11:26:58 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/01 12:21:27 by deladia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ char		*create_word(char **line)
 t_token		*parse(char *line, t_token *token)
 {
 	char	*word;
-
-	if (line == 0)
 
 	while (*line != '\0')
 	{

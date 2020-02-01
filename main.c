@@ -23,7 +23,7 @@ int		main(void)
 	double		b;
 	int error;
 //	tmp = parse_json("../../../param.json");
-	if ((tmp = parse_json("kekw")) == 0)
+	if ((tmp = parse_json("test.json")) == 0)
 		exit(0);
 	error = get_node(tmp, "light_1", &node);
 	error = get_array(node, "position", &array);
