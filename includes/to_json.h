@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   to_json.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thorker <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 01:50:08 by thorker           #+#    #+#             */
-/*   Updated: 2020/02/01 11:09:51 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/01 13:50:44 by deladia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,7 @@ void					*ft_find(t_key_value *tree,
 void					*find_in_array(t_array *array,
 		size_t item, t_type type, int *error);
 int						check_null_object(t_token **tiken);
-void					*ft_free_token(t_token **head_token);
+int						ft_free_token(t_token **head_token);
+int						ft_gnl(ssize_t fd, t_token **token_head);
+t_token					*parse(char *line, t_token *token);
 #endif

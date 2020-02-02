@@ -6,7 +6,7 @@
 /*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:16:00 by deladia           #+#    #+#             */
-/*   Updated: 2020/02/01 12:19:51 by deladia          ###   ########.fr       */
+/*   Updated: 2020/02/01 13:51:57 by deladia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,22 @@ t_token			*create_token(char *word, t_token *token)
 		token->value = ft_strdup(word);
 	}
 	return (token);
+}
+
+int				ft_gnl(ssize_t fd, t_token **token_head)
+{
+	char	*line;
+	t_token	*token_tmp;
+
+	token_tmp = *token_head;
+	while (get_next_line(fd, &line) > 0)
+	{
+		if ((token_tmp = parse(line, token_tmp)) == 0)
+		{
+			ft_strdel(&line);
+			return (ft_free_token(token_head));
+		}
+		free(line);
+	}
+	return (1);
 }
