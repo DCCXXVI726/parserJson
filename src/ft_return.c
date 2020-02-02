@@ -6,7 +6,7 @@
 /*   By: deladia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 21:54:38 by deladia           #+#    #+#             */
-/*   Updated: 2020/02/01 11:35:13 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/02 07:44:48 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void	ft_return_array(t_array **array, t_type type, void **value)
 	}
 	if (type != 0)
 		ft_memdel(value);
-	free(*array);
-	*array = 0;
+	ft_memdel((void**)array);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 05:48:25 by thorker           #+#    #+#             */
-/*   Updated: 2020/01/31 08:01:06 by deladia          ###   ########.fr       */
+/*   Updated: 2020/02/02 07:44:37 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	*make_array(t_token **token)
 			*token = (*token)->next;
 			return (array);
 		}
+		type = 0;
 		break ;
 	}
 	ft_return_array(&array, type, &value);
