@@ -6,7 +6,7 @@
 #    By: deladia <deladia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/07 20:57:04 by deladia           #+#    #+#              #
-#    Updated: 2020/02/01 13:51:50 by deladia          ###   ########.fr        #
+#    Updated: 2020/02/21 16:33:18 by thorker          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INC = -I ./includes \
 	  -I $(LIB_DIR)/includes
 SRC = ft_is_smth.c check_value.c helps.c realloc_key_value.c get_smth.c \
 	  get_smth2.c parse_json.c tree.c ft_error.c make_smth.c parser.c \
-	  ft_return.c ft_print.c creation_token_list.c
+	  ft_return.c creation_token_list.c
 LIB = -L $(LIB_DIR)/ -lft
 
 SRC_DIR = src

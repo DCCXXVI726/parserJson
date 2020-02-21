@@ -6,7 +6,7 @@
 /*   By: deladia <deladia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 05:48:25 by thorker           #+#    #+#             */
-/*   Updated: 2020/02/02 08:36:08 by thorker          ###   ########.fr       */
+/*   Updated: 2020/02/21 16:32:18 by thorker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,13 @@ void	*make_array(t_token **token)
 		value = check_value(token, &type);
 		if (type == 0 || *token == 0 || realloc_array(array, value, type) == 0)
 			break ;
-		if (ft_strcmp((*token)->value, ",") == 0)
+		if ((ft_strcmp((*token)->value, ",") == 0) | (type = 0))
 			continue;
 		if (ft_strcmp((*token)->value, "]") == 0)
 		{
 			*token = (*token)->next;
 			return (array);
 		}
-		type = 0;
 		break ;
 	}
 	ft_return_array(&array, type, &value);
